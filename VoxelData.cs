@@ -1,7 +1,19 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class VoxelData
 {
+	public static readonly int TextureAtlasSizeInBlocks = 4;
+	public static float NormalizedBlockTextureSize => 1f / TextureAtlasSizeInBlocks;
+
+	public enum BlockFace { Top, Bottom, Side }
+	public static readonly Dictionary<BlockFace, Vector2Int> GrassTextureCoords = new() 
+	{
+		{ BlockFace.Top, new Vector2Int(0, 3) },     // e.g., Grass_Top at (0,3)
+        { BlockFace.Bottom, new Vector2Int(0, 2) },  
+        { BlockFace.Side, new Vector2Int(0, 1) }   
+    };
+
     public static readonly Vector3[] VoxelVerticies = new Vector3[8]
     {
         new Vector3(0.0f, 0.0f, 0.0f),
